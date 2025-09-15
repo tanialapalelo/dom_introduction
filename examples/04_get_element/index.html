@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript on Web</title>
+</head>
+<body>
+    <button id="my-button">
+        Click me!
+    </button>
+    <script>
+        // getElementById (get 1 element by id)
+        const btnById = document.getElementById('my-button');
+        if (btnById) {
+            btnById.addEventListener('click', () => {
+                btnById.textContent = 'Clicked via getElementById!';
+            });
+        }
+
+        // getElementsByTagName (get many elements by tag name, HTMLCollection, live)
+        const buttonsByTag = document.getElementsByTagName('button');
+        // HTMLCollection don't have forEach
+        for (const b of buttonsByTag) {
+            b.style.border = '2px solid blue';
+        }
+
+        // querySelector (returns the first matching element)
+        const firstButton = document.querySelector('button');
+        firstButton && (firstButton.title = 'Ini dipilih pakai querySelector');
+
+        // querySelectorAll (returns all matching elements, NodeList, static)
+        const allButtons = document.querySelectorAll('button');
+        allButtons.forEach(b => {
+            b.style.padding = '10px';
+        });
+
+
+    </script>
+</body>
+</html>

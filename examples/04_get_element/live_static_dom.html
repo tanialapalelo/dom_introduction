@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Live & Static DOM</title>
+    <button id="a">A</button>
+</head>
+<body>
+<script>
+    // Live collection (HTMLCollection)
+    const liveColl = document.getElementsByTagName('button');
+    console.log('liveColl:', liveColl.length); // -> 1
+
+    // Static NodeList (snapshot)
+    const staticList = document.querySelectorAll('button');
+    console.log('staticList:', staticList.length); // -> 1
+
+    // Add a new button
+    const newBtn = document.createElement('button');
+    newBtn.textContent = 'B';
+    document.body.appendChild(newBtn);
+
+    // After adding a new button:
+    console.log('liveColl after append:', liveColl.length); // -> 2 (automatically update)
+    console.log('staticList after append:', staticList.length); // -> 1 (still the same)
+
+    // To get the new NodeList, try call querySelectorAll again
+    const newStaticList = document.querySelectorAll('button');
+    console.log('newStaticList after re-query:', newStaticList.length); // -> 2
+</script>
+</body>
+</html>
